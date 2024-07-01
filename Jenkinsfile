@@ -73,15 +73,15 @@ pipeline {
                 }
             }
         }
-        // // Perform DAST Test on Application
-        // stage('ZAP Dynamic Testing | DAST') {
-        //     steps {
-        //         sshagent(['OWASP-Zap-Credential']) {
-        //             sh 'ssh -o StrictHostKeyChecking=no ubuntu@13.59.158.38 "docker run -t zaproxy/zap-weekly zap-baseline.py -t http://18.216.48.123:30000/" || true'
-        //                                                 //JENKINS_PUBLIC_IP                                                  //EKS_WORKER_NODE_IP_ADDRESS:30000
-        //         }
-        //     }
-        // }
+        // Perform DAST Test on Application
+        stage('ZAP Dynamic Testing | DAST') {
+            steps {
+                sshagent(['OWASP-Zap-Credential']) {
+                    sh 'ssh -o StrictHostKeyChecking=no ubuntu@3.14.136.129 "docker run -t zaproxy/zap-weekly zap-baseline.py -t http://3.137.138.87:30000/" || true'
+                                                        //JENKINS_PUBLIC_IP                                                  //EKS_WORKER_NODE_IP_ADDRESS:30000
+                }
+            }
+        }
         // // Production Deployment Approval
         // stage('Approve Prod Deployment') {
         //     steps {
